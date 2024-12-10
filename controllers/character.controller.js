@@ -15,7 +15,7 @@ exports.addCharacter = (req, res) => {
     return error(res, "Image file is required", 400);
   }
 
-  const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+  const imageUrl = `https://dev.rezshark.com/uploads/${req.file.filename}`;
   const newCharacter = {
     name: req.body.name,
     image: imageUrl,
@@ -107,3 +107,20 @@ exports.deleteCharacter = (req, res) => {
     });
   });
 };
+
+exports.getCharacterById = (req, res) => {
+  const { id } = req.body;
+  if (!id) {
+  return error(res, "Character ID is required", 400);
+  }
+  
+  Character.findById(id, (err, data) => {
+  if (err) {
+  return error(res, "Error occurred while fetching the character.", 500);
+  }
+  if (!data || data.length === 0) {
+  return error(res, "Character not found", 404);
+  }
+  return success(res, data[0], "Character fetched successfully", 200);
+  });
+  };

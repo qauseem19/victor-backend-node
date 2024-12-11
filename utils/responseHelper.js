@@ -8,7 +8,7 @@ module.exports = {
       });
     },
   
-    error: (res, message, statusCode, errors = null) => {
+    errorthrough: (res, message, statusCode, errors = null) => {
       return res.status(statusCode).json({
         success: false,
         message: message,

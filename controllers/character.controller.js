@@ -15,7 +15,7 @@ exports.addCharacter = (req, res) => {
     return errorthrough(res, "Image file is required", 400);
   }
 
-  const imageUrl = `https://dev.rezshark.com/uploads/${req.file.filename}`;
+  const imageUrl = `https://chat.mythosdialogues.com/uploads/${req.file.filename}`;
   const newCharacter = {
     name: req.body.name,
     image: imageUrl,

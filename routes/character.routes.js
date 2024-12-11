@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { addCharacter, getCharacters, editCharacter, deleteCharacter, getCharacterById } = require("../controllers/character.controller");
 const { characterValidationRules } = require("../validations/character.validation");
-const upload = require("../middleware/multerMiddleware.js");
+const upload = require("../Middleware/multerMiddleware.js");
 
 router.post("/character", upload.single("image"), characterValidationRules, addCharacter);
 router.get("/getCharacters", getCharacters);

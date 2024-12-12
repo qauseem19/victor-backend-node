@@ -14,7 +14,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(bodyParser.json());
 // Use routes for character-related API calls
 app.use("/api", characterRoutes);
-
+app.use("/",(req,res)=>{
+    return(res.status(200).json({message:"working perfectly"}))
+})
 // Use routes for user-related API calls
 app.use("/api", userRoutes);
 
